@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.zisky.sdk.model.USSDParameters;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -53,16 +56,37 @@ public class ZiskyPlugin implements MethodCallHandler {
         } else if (call.method.equals("callAction")) {
 
             proceedIfPermissionsAllowed(activity);
-            Log.e(TAG, "callAction");
             final String actionId = call.argument("actionId");
-//            final Map<String, String> extras = call.argument("extras");
-
-            System.out.println("ACTION ID " + actionId);
-//            System.out.println("EXTRAS " + extras.toString());
+            final HashMap<String, String> extras = call.argument("extras");
             Intent intent = new USSDParameters
                     .Builder(activity)
-                    .process("1")
+                    .process(actionId)
                     .build();
+            if (extras != null && !extras.isEmpty()) {
+
+                for (Map.Entry<String, String> entry : extras.entrySet()) {
+                    String key = entry.getKey();
+                    String value = entry.getValue();
+
+                    try {
+                        if (key == null) {
+                            throw new RuntimeException("key is null");
+                        }
+                        if (value == null) {
+                            throw new RuntimeException("value is null");
+                        }
+
+                        intent.putExtra(key, value);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.e("Parameters", "Key value pair was not valid");
+                    }
+
+
+                }
+            }
+            Log.d(TAG, "ACTION_ID " + actionId);
             activity.startActivity(intent);
             result.success("Android " + android.os.Build.VERSION.RELEASE);
 
