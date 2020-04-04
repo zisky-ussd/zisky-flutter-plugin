@@ -2,6 +2,39 @@
 
 ussd automation
 
+## Code Example
+
+`
+  void callBalanceEnquiry() async {
+
+    try {
+      Map<String, String> map = Map();
+      map["amount"] = "1";
+
+      await Zisky.startAction("16", getResponse, extras: map);
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
+
+  String getResponse(response) {
+    print("RESULT FINAL= $response");
+    if (response != null) {
+      ActionResponse responseObj =
+          ActionResponse.fromJson(jsonDecode(response));
+
+      if (responseObj.parsed_variables.containsKey("balance")) {
+        setState(() {
+          result = "\$" + responseObj.parsed_variables["balance"];
+        });
+      }
+    }
+
+    return response;
+  }
+
+`
+
 ## Getting Started
 
 This project is a starting point for a Flutter
