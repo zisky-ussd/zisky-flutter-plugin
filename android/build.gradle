@@ -40,7 +40,6 @@ android {
 dependencies {
     //Zisky Library
     implementation 'com.zisky.ussd.automation:zisky-ussd:1.0.0'
-    implementation 'com.romellfudi.permission:fudi-permission:2.0.a'
 
 
 }
