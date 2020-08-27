@@ -119,7 +119,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
         eventChannel = null;
     }
 
-    public static final String INTENT_FILTER_PACKAGE = "zisky.co.test_automation.TRANSACTION_CONFIRMATION";
+    public static final String INTENT_FILTER_PACKAGE = "co.zisky.flutter.TRANSACTION_CONFIRMATION";
 
     @Override
     public void onListen(Object o, EventChannel.EventSink eventSink) {
