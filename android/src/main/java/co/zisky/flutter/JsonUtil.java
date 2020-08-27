@@ -1,4 +1,4 @@
-package com.zisky.zisky;
+package co.zisky.flutter;
 
 import android.content.Context;
 import android.util.Log;

@@ -5,10 +5,10 @@ import 'package:flutter/services.dart';
 
 class Zisky {
   static const MethodChannel methodChannel =
-  const MethodChannel('com.zisky.ussd.automation/zisky');
+  const MethodChannel('co.zisky.ussd.automation/zisky');
 
   static const stream =
-  const EventChannel('com.zisky.ussd.automation/zisky-stream');
+  const EventChannel('co.zisky.ussd.automation/zisky-stream');
 
   static StreamSubscription _broadcastReceiverSubscription;
 

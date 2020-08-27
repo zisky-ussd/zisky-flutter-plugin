@@ -1,4 +1,4 @@
-package com.zisky.zisky;
+package co.zisky.flutter;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -7,11 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import com.zisky.sdk.model.USSDParameters;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import co.zisky.ussd.sdk.model.USSDParameters;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.EventChannel;
@@ -21,9 +20,9 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
-import static com.zisky.sdk.Constants.USSD_MESSAGE;
-import static com.zisky.sdk.Constants.USSD_STATUS;
-import static com.zisky.zisky.JsonUtil.toJson;
+import static co.zisky.ussd.sdk.Constants.USSD_MESSAGE;
+import static co.zisky.ussd.sdk.Constants.USSD_STATUS;
+import static co.zisky.flutter.JsonUtil.toJson;
 
 /**
  * ZiskyPlugin
@@ -49,8 +48,8 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
     private void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
         Log.d(TAG, "onAttachedToEngine");
         this.applicationContext = applicationContext;
-        methodChannel = new MethodChannel(messenger, "com.zisky.ussd.automation/zisky");
-        eventChannel = new EventChannel(messenger, "com.zisky.ussd.automation/zisky-stream");
+        methodChannel = new MethodChannel(messenger, "co.zisky.ussd.automation/zisky");
+        eventChannel = new EventChannel(messenger, "co.zisky.ussd.automation/zisky-stream");
         eventChannel.setStreamHandler(this);
         methodChannel.setMethodCallHandler(this);
         this.messenger = messenger;
@@ -69,7 +68,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
 
             Intent intent = new USSDParameters
                     .Builder(applicationContext)
-                    .process(actionId)
+                    .processId(actionId)
                     .build();
             if (extras != null && !extras.isEmpty()) {
                 Log.d(TAG, "SUPPLIED EXTRAS " + extras.toString());
@@ -120,7 +119,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
         eventChannel = null;
     }
 
-    public static final String INTENT_FILTER_PACKAGE = "zisky.com.test_automation.TRANSACTION_CONFIRMATION";
+    public static final String INTENT_FILTER_PACKAGE = "zisky.co.test_automation.TRANSACTION_CONFIRMATION";
 
     @Override
     public void onListen(Object o, EventChannel.EventSink eventSink) {
