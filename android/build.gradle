@@ -1,4 +1,4 @@
-group 'com.zisky.zisky'
+group 'co.zisky.flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -10,7 +10,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.3.1'
     }
 }
 
@@ -20,6 +20,9 @@ rootProject.allprojects {
         jcenter()
         mavenCentral()
         mavenLocal()
+        maven {
+            url  "https://dl.bintray.com/zisky-ussd/zisky-ussd-automation"
+        }
     }
 }
 
@@ -31,6 +34,10 @@ android {
     defaultConfig {
         minSdkVersion 16
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
     }
     lintOptions {
         disable 'InvalidPackage'
@@ -39,8 +46,8 @@ android {
 
 dependencies {
     //Zisky Library
-    implementation 'com.zisky.ussd.automation:zisky-ussd:1.0.0'
-    implementation 'com.romellfudi.permission:fudi-permission:2.0.a'
+    implementation 'co.zisky.ussd.automation:android-automation:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-core:2.0.0'
 
 
 }
