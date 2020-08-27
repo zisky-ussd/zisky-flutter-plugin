@@ -119,12 +119,12 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
         eventChannel = null;
     }
 
-    public static final String INTENT_FILTER_PACKAGE = "co.zisky.flutter.TRANSACTION_CONFIRMATION";
 
     @Override
     public void onListen(Object o, EventChannel.EventSink eventSink) {
         messageReceiver = createBroadcastReceiver(eventSink);
-        IntentFilter intentFilter = new IntentFilter(INTENT_FILTER_PACKAGE);
+        String packageName = applicationContext.getPackageName()+".TRANSACTION_CONFIRMATION";
+        IntentFilter intentFilter = new IntentFilter(packageName);
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
         applicationContext.registerReceiver(messageReceiver, intentFilter);
 
