@@ -1,17 +1,20 @@
-# zisky
+# Zisky
 
-ussd automation
+Zisky is a flutter plugin that automates android ussd sessions.
 
-## Code Example
+## import
+```bash
+import 'package:zisky/zisky.dart';
+```
 
-`
+## Usage
+
+```java
   void callBalanceEnquiry() async {
 
     try {
-      Map<String, String> map = Map();
-      map["amount"] = "1";
 
-      await Zisky.startAction("16", getResponse, extras: map);
+      await Zisky.startAction("action_id", getResponse);
     } on PlatformException catch (e) {
       print(e);
     }
@@ -33,14 +36,37 @@ ussd automation
     return response;
   }
 
-`
+```
+
+
+
+```java
+  void sendMoney() async {
+
+    try {
+      Map<String, String> map = Map();
+      map["amount"] = "1";
+      map["destination"] = "263774......";
+      await Zisky.startAction("action_id", getResponse, extras: map);
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
+
+
+
+```
+
+### Github Example
+
+[zisky-flutter-ussd-automation](https://github.com/zisky-ussd/zisky-flutter-ussd-automation)
 
 ## Getting Started
 
 This project is a starting point for a Flutter
 [plug-in package](https://flutter.dev/developing-packages/),
 a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Android.
 
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
