@@ -1,4 +1,8 @@
 # zisky-flutter-plugin
+## 0.0.4
+### Changed
+ - Bug fixes
+
 ## 0.0.3
 ### Changed
  - Update readme

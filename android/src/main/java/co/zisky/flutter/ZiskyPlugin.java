@@ -70,6 +70,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
                     .Builder(applicationContext)
                     .processId(actionId)
                     .build();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             if (extras != null && !extras.isEmpty()) {
                 Log.d(TAG, "SUPPLIED EXTRAS " + extras.toString());
 
