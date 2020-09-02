@@ -39,7 +39,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
     private BinaryMessenger messenger;
 
     public static void registerWith(Registrar registrar) {
-        ZiskyPlugin ziskyPlugin = new ZiskyPlugin(registrar.activity());
+        ZiskyPlugin ziskyPlugin = new ZiskyPlugin();
         ziskyPlugin.onAttachedToEngine(registrar.context(), registrar.messenger());
 
 
@@ -56,7 +56,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
 
     }
 
-    private ZiskyPlugin(Activity activity) {
+    private ZiskyPlugin() {
     }
 
     @Override
