@@ -34,5 +34,11 @@ class Zisky {
     return null;
   }
 
-
+  static Future<void> init() async {
+    try {
+      await methodChannel.invokeMethod('initialization');
+    } on PlatformException catch (e) {
+      print("ZISKY_INITIALIZATION_EXCEPTION $e");
+    }
+  }
 }

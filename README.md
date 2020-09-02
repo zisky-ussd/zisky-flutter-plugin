@@ -8,6 +8,14 @@ import 'package:zisky/zisky.dart';
 ```
 
 ## Usage
+## Initialize Zisky sdk in main method
+
+```java
+void main() {
+  runApp(MyApp());
+  Zisky.init();
+}
+```
 
 ```java
   void callBalanceEnquiry() async {

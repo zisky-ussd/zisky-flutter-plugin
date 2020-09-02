@@ -23,7 +23,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 import static co.zisky.ussd.sdk.Constants.USSD_MESSAGE;
 import static co.zisky.ussd.sdk.Constants.USSD_STATUS;
 import static co.zisky.flutter.JsonUtil.toJson;
-
+import co.zisky.ussd.sdk.ZiSky;
 /**
  * ZiskyPlugin
  */
@@ -97,8 +97,10 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
                 }
             }
             applicationContext.startActivity(intent);
-        }
-        {
+        }else if (call.method.equals("initialization")) {
+            Log.d("INITIALIZATION", "initialization...... ");
+            ZiSky.init(applicationContext);
+        } else{
             result.notImplemented();
         }
     }
