@@ -56,7 +56,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
 
     }
 
-    private ZiskyPlugin() {
+    public ZiskyPlugin() {
     }
 
     @Override
