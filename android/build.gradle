@@ -48,6 +48,8 @@ dependencies {
     //Zisky Library
     implementation 'co.zisky.ussd.automation:android-automation:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-core:2.0.0'
+//    implementation files('C:\\Users\\Public\\flutternew\\flutter\\bin\\cache\\artifacts\\engine' +
+//            '\\android-x86-jit-release\\flutter.jar')
 
 
 }
