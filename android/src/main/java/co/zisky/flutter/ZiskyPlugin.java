@@ -36,7 +36,6 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
     private Context applicationContext;
     private MethodChannel methodChannel;
     private EventChannel eventChannel;
-    private BinaryMessenger messenger;
 
     public static void registerWith(Registrar registrar) {
         ZiskyPlugin ziskyPlugin = new ZiskyPlugin();
@@ -52,7 +51,6 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
         eventChannel = new EventChannel(messenger, "co.zisky.ussd.automation/zisky-stream");
         eventChannel.setStreamHandler(this);
         methodChannel.setMethodCallHandler(this);
-        this.messenger = messenger;
 
     }
 
@@ -110,7 +108,7 @@ public class ZiskyPlugin implements MethodCallHandler, EventChannel.StreamHandle
 
     @Override
     public void onAttachedToEngine(FlutterPluginBinding binding) {
-        onAttachedToEngine(binding.getApplicationContext(), messenger);
+        onAttachedToEngine(binding.getApplicationContext(), binding.getBinaryMessenger());
     }
 
     @Override
