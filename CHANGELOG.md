@@ -1,4 +1,8 @@
 # zisky-flutter-plugin
+## 2.0.0
+### Changed
+- Added NullSafety
+
 ## 0.0.6
 ### Changed
  - Fix plugin build
