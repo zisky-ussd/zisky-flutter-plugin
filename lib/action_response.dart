@@ -1,7 +1,7 @@
 class ActionResponse {
-  String message;
-  String status;
-  Map<String, dynamic> parsed_variables;
+  String? message;
+  String? status;
+  Map<String, dynamic>? parsed_variables;
 
   ActionResponse({this.message, this.status, this.parsed_variables});
 

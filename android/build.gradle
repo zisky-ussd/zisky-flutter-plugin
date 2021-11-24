@@ -6,7 +6,7 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
-        mavenLocal()
+//        mavenLocal()
     }
 
     dependencies {
@@ -19,9 +19,9 @@ rootProject.allprojects {
         google()
         jcenter()
         mavenCentral()
-        mavenLocal()
+//        mavenLocal()
         maven {
-            url  "https://dl.bintray.com/zisky-ussd/zisky-ussd-automation"
+            url "https://ziskyussd.jfrog.io/artifactory/zisky-automation-gradle-release-local"
         }
     }
 }
@@ -46,9 +46,9 @@ android {
 
 dependencies {
     //Zisky Library
-    implementation 'co.zisky.ussd.automation:android-automation:1.0.0'
+    implementation 'co.zisky.ussd.automation:android-automation:1.0.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-core:2.0.0'
-//    implementation files('C:\\Users\\Public\\flutternew\\flutter\\bin\\cache\\artifacts\\engine' +
+//    implementation files('C:\\src\\flutter\\bin\\cache\\artifacts\\engine' +
 //            '\\android-x86-jit-release\\flutter.jar')
 
 

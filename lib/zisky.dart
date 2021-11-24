@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
@@ -10,14 +9,20 @@ class Zisky {
   static const stream =
   const EventChannel('co.zisky.ussd.automation/zisky-stream');
 
-  static StreamSubscription _broadcastReceiverSubscription;
+  static StreamSubscription? _broadcastReceiverSubscription;
 
-  static Future<String> startAction(String actionId, Function result,
-      {Map<String, String> extras}) async {
+  static onData(Function? onData){
+
+  }
+  static Future<dynamic> startAction(String actionId,Function result,
+      {Map<String, String>? extras}) async {
     try {
-      var completer = new Completer<Object>();
+      Completer completer = new Completer<String>();
       _broadcastReceiverSubscription =
-          stream.receiveBroadcastStream().listen(result);
+          stream.receiveBroadcastStream().listen((data){
+            print(data);
+            result(data);
+          });
 
       if (extras == null) {
         extras = new Map();
@@ -25,7 +30,7 @@ class Zisky {
 
       await methodChannel.invokeMethod('callAction',
           <String, dynamic>{'actionId': actionId, "extras": extras});
-      _broadcastReceiverSubscription.onData(completer.complete);
+      _broadcastReceiverSubscription?.onData(completer.complete);
 
       return completer.future;
     } on PlatformException catch (e) {
